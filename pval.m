@@ -1,4 +1,4 @@
-function [ w ] = pval( a , x)
+function [ w ] = pval(a , x)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     ilprobek = size(x,1);
