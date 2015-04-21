@@ -1,7 +1,7 @@
-function [] = Zadanie1(rozm)
+function [] = Zadanie1(rozm, ilosc)
     imax = 10000;
     tol = 0.00001;
-    ilosc = 30;
+    %ilosc = 30;
     
     IterSym = 0;
     IterSymS = 0;
@@ -18,19 +18,10 @@ function [] = Zadanie1(rozm)
         for j = 1:ilosc
             A = rand(rozm);
             [E,i,s] = eigvalS(A,tol,imax);
-            %sort(E)
-            %sort(eig(A))
-            %sort(E) - sort(eig(A))
-            %norm(sort(E) - sort(eig(A)));
+
             if(s == 1)
-            IterNSymS = IterNSymS + i;
-            Etmp = sort(E) - sort(eig(A));
-            tmp = 0;
-            for i = 1:rozm
-                tmp = tmp + abs(Etmp(i,1) * Etmp(i,1));
-            end
-            %EigNSymS = EigNSymS + sqrt(tmp);
-            EigNSymS = EigNSymS + norm(sort(E) - sort(eig(A)));
+                IterNSymS = IterNSymS + i;
+                EigNSymS = EigNSymS + norm(abs(sort(E) - sort(eig(A))),1);
             else
                 FailNSymS = FailNSymS +1;
             end
@@ -39,31 +30,33 @@ function [] = Zadanie1(rozm)
             [E,i,s] = eigval(A,tol,imax);
             
             if(s == 1)
-            IterSym = IterSym + i;
-            EigSym = EigSym + norm(sort(E) - sort(eig(A)));
+                IterSym = IterSym + i;
+                EigSym = EigSym + norm(sort(E) - sort(eig(A)),1);
             else
                 FailSym = FailSym +1;
             end
             
             [E,i,s] = eigvalS(A,tol,imax);
             if(s == 1)
-            IterSymS = IterSymS + i;
-            EigSymS = EigSymS + norm(sort(E) - sort(eig(A)));
+                IterSymS = IterSymS + i;
+                EigSymS = EigSymS + norm(sort(E) - sort(eig(A)),1);
             else
                 FailSymS = FailSymS +1;
             end
         end
-        IterNSymS = IterNSymS/ilosc
-        EigNSymS = EigNSymS/ilosc
-        
         IterSym = IterSym/ilosc
-        EigSym = EigSym/ilosc
+        %EigSym = EigSym/(ilosc*rozm)
+        FailSym
         
         IterSymS = IterSymS/ilosc
-        EigSymS = EigSymS/ilosc
-        
-        FailSym
+        %EigSymS = EigSymS/(ilosc*rozm)
         FailSymS
+        
+        IterNSymS = IterNSymS/ilosc
+        %EigNSymS = EigNSymS/(ilosc*rozm)
         FailNSymS
+        
+        
+
         
 end

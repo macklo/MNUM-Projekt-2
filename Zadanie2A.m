@@ -8,5 +8,6 @@ function [ rnqr ] = Zadanie2A( m )
     for i = 1:m
         rnqr(i,2)= Zadanie2(i,2);
     end
+    close all;
 end
 

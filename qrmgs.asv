@@ -1,11 +1,10 @@
 function [ Q, R ] = qrmgs( A )
-%qrmgs Rozk³ad QR zmodyfikowanym algorytmem Grama-Schmidta
+%qrmgs Rozk³ad QR zmodyfikowanym algorytmem Grama-Schi
+%   Detailed explanation goes here
     [m, n] = size(A);
     Q = zeros(m,n);
     R = zeros(n,n);
     d = zeros(1,n);
-    
-    %Rozk³ad QR
     for i =1:n
         Q(:,i) = A(:,i);
         R(i,i) = 1;
@@ -15,7 +14,6 @@ function [ Q, R ] = qrmgs( A )
             A(:,j) = A(:,j) - R(i,j)*Q(:,i);
         end
     end
-    %Normowanie uk³adu
     for i=1:n
         dd = norm(Q(:,i));
         Q(:,i) = Q(:,i)/dd;

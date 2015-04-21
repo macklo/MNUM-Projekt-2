@@ -3,7 +3,7 @@ function [ a, res ] = aproksymacja( x, y, n, meth )
 %   meth : 1 - uklad rownan normalnych; 2 - qr
     N = size(x,1);
     G = zeros(n,n);
-    A = zeros(n,n);
+    A = zeros(N,n);
     q = zeros(n,1);
     for i = 1:n
         for k = 1:n
@@ -28,14 +28,14 @@ function [ a, res ] = aproksymacja( x, y, n, meth )
     if meth == 1
         a = G\ q;
         z = pval(a, x);
-        %res =  norm(z - y);
-        res = norm(G*a - q);
+        res =  norm(z - y);
+        %res = norm(G*a - q);
     elseif meth == 2
         [Q,R] = qrmgs(A);
         a =R\Q'*y;
         z = pval(a, x);
-        %res =  norm(z - y);
-        res = norm(Q*R*a - y);
+        res =  norm(z - y);
+        %res = norm(Q*R*a - y);
     end
         
 end
