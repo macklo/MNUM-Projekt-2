@@ -1,6 +1,6 @@
 function [ w ] = pval(a , x)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%   pval oblicza wartosci wielomianu o wspolczynnikach a(a(1) odpowiada x^0)
+%   w - wartosci wielomianu w danych punktach x
     ilprobek = size(x,1);
     stwiel = size(a,1);
     w = zeros(ilprobek,1);
@@ -9,6 +9,5 @@ function [ w ] = pval(a , x)
             w(i) = w(i) + a(j) * x(i)^(j-1);
         end
     end
-
 end
 

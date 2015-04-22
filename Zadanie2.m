@@ -3,10 +3,10 @@ function [ r ] = Zadanie2( n , meth)
 %   Detailed explanation goes here
     if meth == 1
         rodz = 'n';
-        tytul  = ['Uk³ad równañ normalnych - stopieñ wielomainu = ' int2str(n)];
+        tytul  = ['Uk³ad równañ normalnych - stopieñ wielomainu = ' int2str(n-1)];
     else
         rodz = 'qr';
-        tytul  = ['Rozk³ad QR - stopieñ wielomainu = ' int2str(n)];
+        tytul  = ['Rozk³ad QR - stopieñ wielomainu = ' int2str(n-1)];
     end
     gx = -5:0.1:5;
     gx = gx';
